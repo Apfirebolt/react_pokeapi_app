@@ -11,9 +11,11 @@ const Pokemon = lazy(() => import("./screens/Pokemon"));
 const Item = lazy(() => import("./screens/Item"));
 const Move = lazy(() => import("./screens/Move"));
 const Location = lazy(() => import("./screens/Location"));
+const Machine = lazy(() => import("./screens/Machine"));
 const MoveDetail = lazy(() => import("./screens/MoveDetail"));
 const ItemDetail = lazy(() => import("./screens/ItemDetail"));
 const LocationDetail = lazy(() => import("./screens/LocationDetail"));
+const MachineDetail = lazy(() => import("./screens/MachineDetail"));
 
 const App = () => {
   return (
@@ -26,10 +28,12 @@ const App = () => {
           <Route path="/item" element={<Item/>} />
           <Route path="/move" element={<Move/>} />
           <Route path="/location" element={<Location/>} />
+          <Route path="/machine" element={<Machine/>} />
           <Route path="/pokemon/:id" element={<PokemonDetail/>} />
           <Route path="/item/:id" element={<ItemDetail/>} />
           <Route path="/move/:id" element={<MoveDetail/>} />
           <Route path="/location/:id" element={<LocationDetail/>} />
+          <Route path="/machine/:id" element={<MachineDetail/>} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       <Footer />

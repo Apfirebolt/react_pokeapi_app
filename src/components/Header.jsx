@@ -36,6 +36,11 @@ const Header = () => {
               Location
             </Link>
           </li>
+          <li>
+            <Link to="/machine" className="text-white hover:text-gray-200">
+              Machine
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
