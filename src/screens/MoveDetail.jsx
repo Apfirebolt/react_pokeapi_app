@@ -1,45 +1,36 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getSingleMove } from "../features/move/moveSlice";
+import Loader from "../components/Loader";
 
 const MoveDetail = () => {
-    const { moveName } = useParams();
-    const [move, setMove] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+  const { id } = useParams();
+  const { move, isLoading } = useSelector((state) => state.moveData);
 
-    useEffect(() => {
-        const fetchMove = async () => {
-            try {
-                const response = await fetch(`https://pokeapi.co/api/v2/move/${moveName}`);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setMove(data);
-            } catch (error) {
-                setError(error);
-            } finally {
-                setLoading(false);
-            }
-        };
+  const dispatch = useDispatch();
 
-        fetchMove();
-    }, [moveName]);
+  useEffect(() => {
+    dispatch(getSingleMove(id));
+  }, [dispatch, id]);
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>;
+  if (isLoading) {
+    return <Loader />;
+  }
 
-    return (
-        <div>
-            <h1>{move.name}</h1>
-            <p><strong>Accuracy:</strong> {move.accuracy}</p>
-            <p><strong>Power:</strong> {move.power}</p>
-            <p><strong>PP:</strong> {move.pp}</p>
-            <p><strong>Type:</strong> {move.type.name}</p>
-            <p><strong>Damage Class:</strong> {move.damage_class.name}</p>
-            <p><strong>Effect:</strong> {move.effect_entries[0].effect}</p>
-        </div>
-    );
+  return (
+    <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-5">
+      <div className="p-4">
+        <h1 className="text-2xl font-bold mb-2">{move.name}</h1>
+        <p className="text-gray-700 mb-2">Power: {move.power}</p>
+        <p className="text-gray-700 mb-2">PP: {move.pp}</p>
+        <p className="text-gray-700 mb-2">Accuracy: {move.accuracy}</p>
+        <p className="text-gray-700 mb-4">Type: {move.type.name}</p>
+        <h2 className="text-xl font-semibold mb-2">Effect</h2>
+        <p className="text-gray-700">{move.effect_entries[0].effect}</p>
+      </div>
+    </div>
+  );
 };
 
 export default MoveDetail;

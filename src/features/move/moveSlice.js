@@ -34,7 +34,7 @@ export const getSingleMove = createAsyncThunk(
   "move/get",
   async (moveId, thunkAPI) => {
     try {
-      return await moveService.getMove(moveId);
+      return await moveService.getSingleMove(moveId);
     } catch (error) {
       const message =
         (error.response &&

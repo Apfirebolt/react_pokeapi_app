@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getMoveData } from "../features/move/moveSlice";
 import Loader from "../components/Loader";
 
@@ -7,6 +8,13 @@ const Move = () => {
   const { moveList, isLoading } = useSelector((state) => state.moveData);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const goToDetail = (url) => {
+    // https://pokeapi.co/api/v2/move/12/
+    const id = url.split("/")[6];
+    navigate(`/move/${id}`);
+  };
 
   useEffect(() => {
     dispatch(getMoveData());
@@ -45,7 +53,10 @@ const Move = () => {
                   <td className="py-3 px-4 border-b border-gray-300 capitalize">
                     {move.name}
                   </td>
-                  <td className="py-3 px-4 border-b text-center border-gray-300">
+                  <td
+                    className="py-3 px-4 border-b text-center border-gray-300 hover:text-amber-500 transition-all duration-200 cursor-pointer"
+                    onClick={() => goToDetail(move.url)}
+                  >
                     {move.url}
                   </td>
                 </tr>

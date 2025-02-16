@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getItemData } from "../features/item/itemSlice";
 import Loader from "../components/Loader";
 
@@ -7,6 +8,13 @@ const Item = () => {
   const { itemList, isLoading } = useSelector((state) => state.itemData);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const goToDetail = (url) => {
+    // https://pokeapi.co/api/v2/item/12/
+    const id = url.split("/")[6];
+    navigate(`/item/${id}`);
+  };
 
   useEffect(() => {
     dispatch(getItemData());
@@ -45,7 +53,10 @@ const Item = () => {
                   <td className="py-3 px-4 border-b border-gray-300 capitalize">
                     {item.name}
                   </td>
-                  <td className="py-3 px-4 border-b text-center border-gray-300">
+                  <td
+                    className="py-3 px-4 border-b text-center border-gray-300 hover:text-amber-500 transition-all duration-200 cursor-pointer"
+                    onClick={() => goToDetail(item.url)}
+                  >
                     {item.url}
                   </td>
                 </tr>

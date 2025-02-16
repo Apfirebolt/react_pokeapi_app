@@ -1,12 +1,20 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getPokemonData } from "../features/pokemon/pokemonSlice";
 import Loader from "../components/Loader";
 
-const Home = () => {
+const Pokemon = () => {
   const { pokemonList, isLoading } = useSelector((state) => state.pokemonData);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const goToDetail = (url) => {
+    // https://pokeapi.co/api/v2/move/12/
+    const id = url.split("/")[6];
+    navigate(`/pokemon/${id}`);
+  }
 
   useEffect(() => {
     dispatch(getPokemonData());
@@ -47,7 +55,7 @@ const Home = () => {
                   <td className="py-3 px-4 border-b border-gray-300 capitalize">
                     {pokemon.name}
                   </td>
-                  <td className="py-3 px-4 border-b text-center border-gray-300">
+                  <td className="py-3 px-4 border-b text-center border-gray-300 hover:text-amber-500 transition-all duration-200 cursor-pointer" onClick={() => goToDetail(pokemon.url)}>
                     {pokemon.url}
                   </td>
                 </tr>
@@ -59,4 +67,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Pokemon;

@@ -10,6 +10,8 @@ const About = lazy(() => import("./screens/About"));
 const Pokemon = lazy(() => import("./screens/Pokemon"));
 const Item = lazy(() => import("./screens/Item"));
 const Move = lazy(() => import("./screens/Move"));
+const MoveDetail = lazy(() => import("./screens/MoveDetail"));
+const ItemDetail = lazy(() => import("./screens/ItemDetail"));
 
 const App = () => {
   return (
@@ -22,6 +24,8 @@ const App = () => {
           <Route path="/item" element={<Item/>} />
           <Route path="/move" element={<Move/>} />
           <Route path="/pokemon/:id" element={<PokemonDetail/>} />
+          <Route path="/item/:id" element={<ItemDetail/>} />
+          <Route path="/move/:id" element={<MoveDetail/>} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       <Footer />
