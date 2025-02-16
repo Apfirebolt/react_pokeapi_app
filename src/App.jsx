@@ -1,22 +1,26 @@
-import { useState } from 'react'
-import './App.css'
+import { lazy } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import HomePage from "./screens/Home";
+import PokemonDetail from "./screens/PokemonDetail";
 
-function App() {
-  const [count, setCount] = useState(0)
+// lazy imports for code splitting
+const About = lazy(() => import("./screens/About"));
 
+const App = () => {
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button className='bg-amber-400 px-2 py-3' onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-    </>
-  )
-}
+    <Router>
+      <Header />
+        <Routes>
+          <Route path="/" element={<HomePage/>} exact />
+          <Route path="/about" element={<About/>} />
+          <Route path="/pokemon/:id" element={<PokemonDetail/>} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      <Footer />
+    </Router>
+  );
+};
 
-export default App
+export default App;
