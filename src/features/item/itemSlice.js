@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import itemService from "./itemService";
 
 const initialState = {
-  itemList: [],
+  itemList: {},
   item: {},
   isError: false,
   isSuccess: false,
@@ -13,9 +13,9 @@ const initialState = {
 // Get Multiple items
 export const getItemData = createAsyncThunk(
   "item/getItemData",
-  async (params, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      return await itemService.getItem(params.search, params.page);
+      return await itemService.getItem();
     } catch (error) {
       const message =
         (error.response &&
@@ -34,7 +34,7 @@ export const getSingleItem = createAsyncThunk(
   "item/get",
   async (itemId, thunkAPI) => {
     try {
-      return await itemService.getItem(itemId);
+      return await itemService.getSingleItem(itemId);
     } catch (error) {
       const message =
         (error.response &&
@@ -66,7 +66,7 @@ export const itemSlice = createSlice({
       })
       .addCase(getItemData.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = action.payload;
+        state.itemList = action.payload;
       })
       .addCase(getItemData.rejected, (state, action) => {
         state.isLoading = false;

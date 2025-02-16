@@ -7,6 +7,9 @@ import PokemonDetail from "./screens/PokemonDetail";
 
 // lazy imports for code splitting
 const About = lazy(() => import("./screens/About"));
+const Pokemon = lazy(() => import("./screens/Pokemon"));
+const Item = lazy(() => import("./screens/Item"));
+const Move = lazy(() => import("./screens/Move"));
 
 const App = () => {
   return (
@@ -15,6 +18,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage/>} exact />
           <Route path="/about" element={<About/>} />
+          <Route path="/pokemon" element={<Pokemon/>} />
+          <Route path="/item" element={<Item/>} />
+          <Route path="/move" element={<Move/>} />
           <Route path="/pokemon/:id" element={<PokemonDetail/>} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

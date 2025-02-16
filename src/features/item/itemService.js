@@ -4,12 +4,6 @@ import axiosInstance from "../../plugins/interceptor";
 // Get item data
 const getItem = async (search = "", page = 1) => {
     try {
-        if (search) {
-            const response = await axiosInstance.get(
-                `item?page=${page}&search=${search}`
-            );
-            return response.data;
-        }
         const response = await axiosInstance.get(`item?page=${page}`);
         return response.data;
     } catch (err) {

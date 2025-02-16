@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import pokemonService from "./pokemonService";
 
 const initialState = {
-  pokemonList: [],
+  pokemonList: {},
   pokemon: {},
   isError: false,
   isSuccess: false,
@@ -13,9 +13,9 @@ const initialState = {
 // Get Multiple pokemon
 export const getPokemonData = createAsyncThunk(
   "pokemon/getPokemonData",
-  async (params, thunkAPI) => {
-    try { 
-      return await pokemonService.getPokemon(params.search, params.page);
+  async (_, thunkAPI) => {
+    try {
+      return await pokemonService.getPokemon();
     } catch (error) {
       const message =
         (error.response &&
@@ -35,7 +35,7 @@ export const getSinglePokemon = createAsyncThunk(
   'pokemon/get',
   async (pokemonId, thunkAPI) => {
     try {
-      return await pokemonService.getMovie(pokemonId)
+      return await pokemonService.getSinglePokemon(pokemonId)
     } catch (error) {
       const message =
         (error.response &&
@@ -67,7 +67,7 @@ export const pokemonSlice = createSlice({
       })
       .addCase(getPokemonData.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.movies = action.payload;
+        state.pokemonList = action.payload;
       })
       .addCase(getPokemonData.rejected, (state, action) => {
         state.isLoading = false;
@@ -79,7 +79,7 @@ export const pokemonSlice = createSlice({
       })
       .addCase(getSinglePokemon.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.movie = action.payload;
+        state.pokemon = action.payload;
       })
       .addCase(getSinglePokemon.rejected, (state, action) => {
         state.isLoading = false;

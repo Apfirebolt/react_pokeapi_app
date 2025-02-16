@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import moveService from "./moveService";
 
 const initialState = {
-  moveList: [],
+  moveList: {},
   move: {},
   isError: false,
   isSuccess: false,
@@ -13,9 +13,9 @@ const initialState = {
 // Get Multiple moves
 export const getMoveData = createAsyncThunk(
   "move/getMoveData",
-  async (params, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      return await moveService.getMove(params.search, params.page);
+      return await moveService.getMove();
     } catch (error) {
       const message =
         (error.response &&
@@ -66,7 +66,7 @@ export const moveSlice = createSlice({
       })
       .addCase(getMoveData.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.moves = action.payload;
+        state.moveList = action.payload;
       })
       .addCase(getMoveData.rejected, (state, action) => {
         state.isLoading = false;
