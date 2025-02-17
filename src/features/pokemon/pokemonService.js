@@ -2,13 +2,14 @@ import { toast } from 'react-toastify'
 import axiosInstance from '../../plugins/interceptor'
 
 // Get pokemon data
-const getPokemon = async (search = '', page = 1) => {
+const getPokemon = async (params) => {
   try {
-    if (search) {
-      const response = await axiosInstance.get(`pokemon?page=${page}&search=${search}`)
-      return response.data
-    }
-    const response = await axiosInstance.get(`pokemon?page=${page}`)
+    const response = await axiosInstance.get('pokemon', {
+      params: {
+        offset: params.offset,
+        limit: params.limit,
+      },
+    })
     return response.data
   } catch (err) {
     let errorMessage = 'Something went wrong'

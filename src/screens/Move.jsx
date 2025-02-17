@@ -1,14 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMoveData } from "../features/move/moveSlice";
 import Loader from "../components/Loader";
+import Pagination from "../components/Pagination";
 
 const Move = () => {
   const { moveList, isLoading } = useSelector((state) => state.moveData);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 40;
+
+  const onPageChange = (page) => {
+    setCurrentPage(page);
+    dispatch(
+      getMoveData({
+        offset: (page - 1) * itemsPerPage,
+        limit: itemsPerPage,
+      })
+    );
+  };
 
   const goToDetail = (url) => {
     // https://pokeapi.co/api/v2/move/12/
@@ -17,7 +30,12 @@ const Move = () => {
   };
 
   useEffect(() => {
-    dispatch(getMoveData());
+    dispatch(
+      getMoveData({
+        offset: 0,
+        limit: itemsPerPage,
+      })
+    );
   }, [dispatch]);
 
   if (isLoading) {
@@ -64,6 +82,13 @@ const Move = () => {
           </tbody>
         </table>
       </div>
+
+      <Pagination
+        totalItems={moveList.count}
+        itemsPerPage={itemsPerPage}
+        currentPage={currentPage}
+        onPageChange={onPageChange}
+      />
     </main>
   );
 };

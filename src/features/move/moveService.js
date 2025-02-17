@@ -2,10 +2,15 @@ import { toast } from "react-toastify";
 import axiosInstance from "../../plugins/interceptor";
 
 // Get move data
-const getMove = async (search = "", page = 1) => {
+const getMove = async (params) => {
   try {
-    const response = await axiosInstance.get(`move?page=${page}`);
-    return response.data;
+    const response = await axiosInstance.get('move', {
+      params: {
+        offset: params.offset,
+        limit: params.limit,
+      },
+    })
+    return response.data
   } catch (err) {
     let errorMessage = "Something went wrong";
     if (err.response.status === 401) {

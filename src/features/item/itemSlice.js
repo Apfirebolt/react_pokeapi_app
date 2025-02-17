@@ -13,9 +13,9 @@ const initialState = {
 // Get Multiple items
 export const getItemData = createAsyncThunk(
   "item/getItemData",
-  async (_, thunkAPI) => {
+  async (params, thunkAPI) => {
     try {
-      return await itemService.getItem();
+      return await itemService.getItem(params);
     } catch (error) {
       const message =
         (error.response &&

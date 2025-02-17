@@ -13,9 +13,9 @@ const initialState = {
 // Get Multiple moves
 export const getMoveData = createAsyncThunk(
   "move/getMoveData",
-  async (_, thunkAPI) => {
+  async (params, thunkAPI) => {
     try {
-      return await moveService.getMove();
+      return await moveService.getMove(params);
     } catch (error) {
       const message =
         (error.response &&
