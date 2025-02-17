@@ -66,7 +66,7 @@ const Move = () => {
               moveList.results.map((move, index) => (
                 <tr key={index}>
                   <td className="py-3 px-4 border-b border-gray-300">
-                    {index + 1}
+                  {index + 1 + (currentPage - 1) * itemsPerPage}
                   </td>
                   <td className="py-3 px-4 border-b border-gray-300 capitalize">
                     {move.name}

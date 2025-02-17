@@ -63,7 +63,7 @@ const Machine = () => {
               machineList.results.map((machine, index) => (
                 <tr key={index}>
                   <td className="py-3 px-4 border-b border-gray-300">
-                    {index + 1}
+                  {index + 1 + (currentPage - 1) * itemsPerPage}
                   </td>
                   <td
                     className="py-3 px-4 border-b text-center border-gray-300 hover:text-amber-500 transition-all duration-200 cursor-pointer"

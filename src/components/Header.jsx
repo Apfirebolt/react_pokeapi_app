@@ -2,42 +2,63 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className="bg-blue-500 p-4">
-      <nav className="container mx-auto flex justify-between items-center">
+    <header className="bg-red-700">
+      <nav className="container mx-auto flex justify-between items-center h-12">
         <div className="text-white text-lg font-bold">PokeAPI App</div>
-        <ul className="flex space-x-4">
-          <li>
-            <Link to="/" className="text-white hover:text-gray-200">
+        <ul className="flex h-full">
+          <li className="h-full flex items-center">
+            <Link
+              to="/"
+              className="bg-orange-500 text-white px-3 py-2 transition duration-300 ease-in-out hover:bg-orange-700 h-full flex items-center"
+            >
               Home
             </Link>
           </li>
-          <li>
-            <Link to="/about" className="text-white hover:text-gray-200">
+          <li className="h-full flex items-center">
+            <Link
+              to="/about"
+              className="bg-orange-500 text-white px-3 py-2 transition duration-300 ease-in-out hover:bg-orange-700 h-full flex items-center"
+            >
               About
             </Link>
           </li>
-          <li>
-            <Link to="/pokemon" className="text-white hover:text-gray-200">
+          <li className="h-full flex items-center">
+            <Link
+              to="/pokemon"
+              className="bg-orange-500 text-white px-3 py-2 transition duration-300 ease-in-out hover:bg-orange-700 h-full flex items-center"
+            >
               Pokemon
             </Link>
           </li>
-          <li>
-            <Link to="/move" className="text-white hover:text-gray-200">
+          <li className="h-full flex items-center">
+            <Link
+              to="/move"
+              className="bg-orange-500 text-white px-3 py-2 transition duration-300 ease-in-out hover:bg-orange-700 h-full flex items-center"
+            >
               Move
             </Link>
           </li>
-          <li>
-            <Link to="/item" className="text-white hover:text-gray-200">
+          <li className="h-full flex items-center">
+            <Link
+              to="/item"
+              className="bg-orange-500 text-white px-3 py-2 transition duration-300 ease-in-out hover:bg-orange-700 h-full flex items-center"
+            >
               Item
             </Link>
           </li>
-          <li>
-            <Link to="/location" className="text-white hover:text-gray-200">
+          <li className="h-full flex items-center">
+            <Link
+              to="/location"
+              className="bg-orange-500 text-white px-3 py-2 transition duration-300 ease-in-out hover:bg-orange-700 h-full flex items-center"
+            >
               Location
             </Link>
           </li>
-          <li>
-            <Link to="/machine" className="text-white hover:text-gray-200">
+          <li className="h-full flex items-center">
+            <Link
+              to="/machine"
+              className="bg-orange-500 text-white px-3 py-2 transition duration-300 ease-in-out hover:bg-orange-700 h-full flex items-center"
+            >
               Machine
             </Link>
           </li>
