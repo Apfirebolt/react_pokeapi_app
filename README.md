@@ -11,7 +11,7 @@ This is a hobby application which utilizes the PokeAPI to fetch and display data
 
 ## Features
 
-It includes following pages split into 6 modules 
+I've worked on multiple applications in the past using PokeAPI. I think this is the most feature rich out of all those. It includes following pages split into 6 modules.
 
 - Pokemon
 - Item
@@ -49,7 +49,7 @@ Item detail page screenshot.
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/react_pokeapi_app.git
+    git clone https://github.com/apfirebolt/react_pokeapi_app.git
     ```
 2. Navigate to the project directory:
     ```sh
@@ -59,6 +59,36 @@ Item detail page screenshot.
     ```sh
     npm install
     ```
+
+## State Management - Redux vs Context API
+
+We shall discuss about the popular options we have for state management in React which are Redux and Context API.
+
+#### Redux
+
+**Pros:**
+- **Predictable State Management:** Redux provides a predictable state container, making it easier to manage and debug application state.
+- **Middleware Support:** Redux has a powerful middleware system that allows for handling side effects, logging, and more.
+- **DevTools Integration:** Redux DevTools offer powerful features for inspecting and debugging state changes.
+- **Community and Ecosystem:** Redux has a large community and a rich ecosystem of middleware and tools.
+
+**Cons:**
+- **Boilerplate Code:** Redux can introduce a lot of boilerplate code, which can be cumbersome for smaller applications.
+- **Complexity:** For simple state management needs, Redux can be overkill and add unnecessary complexity.
+
+#### Context API
+
+**Pros:**
+- **Simplicity:** The Context API is simpler to set up and use, making it ideal for smaller applications or simple state management needs.
+- **No External Dependencies:** Unlike Redux, the Context API is built into React, so there's no need to install additional libraries.
+- **Less Boilerplate:** The Context API requires less boilerplate code compared to Redux.
+
+**Cons:**
+- **Performance Issues:** The Context API can lead to performance issues if not used carefully, as it can cause unnecessary re-renders.
+- **Limited Middleware Support:** The Context API does not have the same level of middleware support as Redux, making it less suitable for handling complex side effects.
+- **DevTools:** The Context API lacks the powerful DevTools integration that Redux offers, making state debugging more challenging.
+
+In summary, Redux is a powerful tool for managing complex state in large applications, while the Context API is a simpler alternative for smaller applications or less complex state management needs.
 
 ## Usage
 
