@@ -15,7 +15,6 @@ export const getPokemonData = createAsyncThunk(
   "pokemon/getPokemonData",
   async (params, thunkAPI) => {
     try {
-      console.log('Offset ', params)
       return await pokemonService.getPokemon(params);
     } catch (error) {
       const message =

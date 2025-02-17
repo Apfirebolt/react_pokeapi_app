@@ -1,3 +1,4 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 const Pagination = ({
@@ -20,6 +21,19 @@ const Pagination = ({
     }
   };
 
+  const [current, setCurrent] = useState(currentPage);
+
+  const handleGo = () => {
+    if (current > 0 && current <= totalPages) {
+      onPageChange(current);
+    }
+  };
+
+  const setCurrentPage = (e) => {
+    console.log(e.target.value);
+    setCurrent(e.target.value);
+  }
+
   return (
     <div className="flex justify-center items-center space-x-4 mt-4">
       <button
@@ -38,6 +52,18 @@ const Pagination = ({
         className="px-4 py-2 bg-gray-300 text-gray-700 rounded disabled:opacity-50"
       >
         Next
+      </button>
+      <input
+        type="number"
+        value={current}
+        onChange={(e) => setCurrentPage(e)}
+        className="px-2 py-1 border rounded"
+      />
+      <button
+        className="px-4 py-2 bg-gray-300 text-gray-700 rounded"
+        onClick={handleGo}
+      >
+        Go
       </button>
     </div>
   );
