@@ -62,6 +62,14 @@ const Header = () => {
               Machine
             </Link>
           </li>
+          <li className="h-full flex items-center">
+            <Link
+              to="/type"
+              className="bg-orange-500 text-white px-3 py-2 transition duration-300 ease-in-out hover:bg-orange-700 h-full flex items-center"
+            >
+              Type
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

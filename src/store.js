@@ -4,6 +4,7 @@ import moveReducer from './features/move/moveSlice'
 import itemReducer from './features/item/itemSlice'
 import locationReducer from './features/location/locationSlice'
 import machineReducer from './features/machine/machineSlice'
+import typeReducer from './features/type/typeSlice'
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     itemData: itemReducer,
     locationData: locationReducer,
     machineData: machineReducer,
+    typeData: typeReducer,
   },
 })

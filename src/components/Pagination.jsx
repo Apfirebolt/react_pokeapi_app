@@ -30,7 +30,6 @@ const Pagination = ({
   };
 
   const setCurrentPage = (e) => {
-    console.log(e.target.value);
     setCurrent(e.target.value);
   }
 
