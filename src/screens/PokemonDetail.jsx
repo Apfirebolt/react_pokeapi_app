@@ -57,46 +57,52 @@ const PokemonDetail = () => {
                     {pokemon.stats && pokemon.stats.length > 0 && (
                         <div className="mb-4">
                             <h2 className="text-xl font-semibold mb-2">Stats</h2>
-                            <ul className="list-disc list-inside">
+                            <div className="flex flex-wrap">
                                 {pokemon.stats.map((stat) => (
-                                    <li key={stat.stat.name}>
-                                        {capitalize(stat.stat.name)}: {stat.base_stat}
-                                    </li>
+                                    <div key={stat.stat.name} className="w-1/2 my-2">
+                                        <span className="bg-amber-600 shadow-md p-2 text-white rounded-md">{capitalize(stat.stat.name)}</span><span className="bg-amber-800 ml-1 shadow-md text-white p-2 rounded-md">{stat.base_stat}</span>
+                                    </div>
                                 ))}
-                            </ul>
+                            </div>
                         </div>
                     )}
 
                     {pokemon.types && pokemon.types.length > 0 && (
                         <div className="mb-4">
                             <h2 className="text-xl font-semibold mb-2">Types</h2>
-                            <ul className="list-disc list-inside">
+                            <div className="flex flex-wrap">
                                 {pokemon.types.map((type) => (
-                                    <li key={type.type.name}>{capitalize(type.type.name)}</li>
+                                    <div key={type.type.name} className="w-1/2">
+                                        {capitalize(type.type.name)}
+                                    </div>
                                 ))}
-                            </ul>
+                            </div>
                         </div>
                     )}
 
                     {pokemon.abilities && pokemon.abilities.length > 0 && (
                         <div className="mb-4">
                             <h2 className="text-xl font-semibold mb-2">Abilities</h2>
-                            <ul className="list-disc list-inside">
+                            <div className="flex flex-wrap">
                                 {pokemon.abilities.map((ability) => (
-                                    <li key={ability.ability.name}>{capitalize(ability.ability.name)}</li>
+                                    <div key={ability.ability.name} className="w-1/2">
+                                        {capitalize(ability.ability.name)}
+                                    </div>
                                 ))}
-                            </ul>
+                            </div>
                         </div>
                     )}
 
                     {pokemon.moves && pokemon.moves.length > 0 && (
                         <div className="mb-4">
                             <h2 className="text-xl font-semibold mb-2">Moves</h2>
-                            <ul className="list-none">
+                            <div className="flex flex-wrap">
                                 {pokemon.moves.slice(0, 10).map((move) => (
-                                    <li className="my-1 px-2 py-3 bg-neutral-200 text-gray-600" key={move.move.name}>{capitalize(move.move.name)}</li>
+                                    <div className="my-1 px-2 py-3 bg-neutral-200 text-gray-600 w-1/2" key={move.move.name}>
+                                        {capitalize(move.move.name)}
+                                    </div>
                                 ))}
-                            </ul>
+                            </div>
                         </div>
                     )}
                 </div>

@@ -21,6 +21,30 @@ It includes following pages split into 6 modules
 
 Individual detail pages for pokemon, item etc exist to get more insights into individual items from the API.
 
+## Screenshots
+
+Here are few screeshots of the application. The CSS is likely to change in future if theme colors are changed.
+
+First screenshot shows the Pokemon detail page
+
+![Screenshot 1](./screenshots/1.png)
+
+This one shows moves page, similarly we have pokemon, items and other list pages as well.
+
+![Screenshot 2](./screenshots/2.png)
+
+Type detail page. It shows list of pokemon belonging to that type.
+
+![Screenshot 3](./screenshots/3.png)
+
+This shows pagination at the end of items page.
+
+![Screenshot 4](./screenshots/4.png)
+
+Item detail page screenshot.
+
+![Screenshot 5](./screenshots/5.png)
+
 ## Installation
 
 1. Clone the repository:
