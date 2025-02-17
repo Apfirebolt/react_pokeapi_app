@@ -2,9 +2,14 @@ import { toast } from "react-toastify";
 import axiosInstance from "../../plugins/interceptor";
 
 // Get machine data
-const getMachine = async (search = "", page = 1) => {
+const getMachine = async (params) => {
     try {
-        const response = await axiosInstance.get(`machine?page=${page}`);
+        const response = await axiosInstance.get("machine", {
+            params: {
+                offset: params.offset,
+                limit: params.limit,
+            },
+        });
         return response.data;
     } catch (err) {
         let errorMessage = "Something went wrong";

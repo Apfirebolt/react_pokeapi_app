@@ -13,9 +13,9 @@ const initialState = {
 // Get Multiple locations
 export const getLocationData = createAsyncThunk(
     "location/getLocationData",
-    async (_, thunkAPI) => {
+    async (params, thunkAPI) => {
         try {
-            return await locationService.getLocation();
+            return await locationService.getLocation(params);
         } catch (error) {
             const message =
                 (error.response &&

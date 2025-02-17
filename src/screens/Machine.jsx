@@ -1,14 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMachineData } from "../features/machine/machineSlice";
 import Loader from "../components/Loader";
+import Pagination from "../components/Pagination";
 
 const Machine = () => {
   const { machineList, isLoading } = useSelector((state) => state.machineData);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 40;
+
+  const onPageChange = (page) => {
+    setCurrentPage(page);
+    dispatch(
+      getMachineData({
+        offset: (page - 1) * itemsPerPage,
+        limit: itemsPerPage,
+      })
+    );
+  };
 
   const goToDetail = (url) => {
     // https://pokeapi.co/api/v2/machine/12/
@@ -17,7 +30,12 @@ const Machine = () => {
   };
 
   useEffect(() => {
-    dispatch(getMachineData());
+    dispatch(
+      getMachineData({
+        offset: 0,
+        limit: itemsPerPage,
+      })
+    );
   }, [dispatch]);
 
   if (isLoading) {
@@ -58,6 +76,13 @@ const Machine = () => {
           </tbody>
         </table>
       </div>
+
+      <Pagination
+        currentPage={currentPage}
+        totalItems={machineList.count}
+        itemsPerPage={itemsPerPage}
+        onPageChange={onPageChange}
+      />
     </main>
   );
 };

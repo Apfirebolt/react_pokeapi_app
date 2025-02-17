@@ -1,14 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getLocationData } from "../features/location/locationSlice";
 import Loader from "../components/Loader";
+import Pagination from "../components/Pagination";
 
 const Location = () => {
     const { locationList, isLoading } = useSelector((state) => state.locationData);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [currentPage, setCurrentPage] = useState(1);
+      const itemsPerPage = 40;
+    
+      const onPageChange = (page) => {
+        setCurrentPage(page);
+        dispatch(
+          getLocationData({
+            offset: (page - 1) * itemsPerPage,
+            limit: itemsPerPage,
+          })
+        );
+      };
 
     const goToDetail = (url) => {
         const id = url.split("/")[6];
@@ -16,7 +29,10 @@ const Location = () => {
     }
 
     useEffect(() => {
-        dispatch(getLocationData());
+        dispatch(getLocationData({
+            offset: 0,
+            limit: itemsPerPage
+        }));
     }, [dispatch]);
 
     if (isLoading) {
@@ -62,6 +78,13 @@ const Location = () => {
                     </tbody>
                 </table>
             </div>
+
+            <Pagination
+                totalItems={locationList.count}
+                itemsPerPage={itemsPerPage}
+                currentPage={currentPage}
+                onPageChange={onPageChange}
+            />
         </main>
     );
 };

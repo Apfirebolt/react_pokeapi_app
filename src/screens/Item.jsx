@@ -11,17 +11,17 @@ const Item = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 40;
-  
-    const onPageChange = (page) => {
-      setCurrentPage(page);
-      dispatch(
-        getItemData({
-          offset: (page - 1) * itemsPerPage,
-          limit: itemsPerPage,
-        })
-      );
-    };
+  const itemsPerPage = 40;
+
+  const onPageChange = (page) => {
+    setCurrentPage(page);
+    dispatch(
+      getItemData({
+        offset: (page - 1) * itemsPerPage,
+        limit: itemsPerPage,
+      })
+    );
+  };
 
   const goToDetail = (url) => {
     // https://pokeapi.co/api/v2/item/12/
@@ -83,7 +83,7 @@ const Item = () => {
         </table>
       </div>
 
-      <Pagination 
+      <Pagination
         totalItems={itemList.count}
         itemsPerPage={itemsPerPage}
         currentPage={currentPage}
