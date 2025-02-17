@@ -30,7 +30,7 @@ const MoveDetail = () => {
       <div className="max-w-xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-5">
         <div className="p-4">
           <div className="flex justify-between items-center mb-4">
-            <h1 className="text-2xl font-bold mb-2">{capitalize(move.name)}</h1>
+            <h1 className="my-2 text-center text-3xl text-blue-900 bg-white shadow-md rounded-md px-2 py-3">{capitalize(move.name)}</h1>
             <p className="text-gray-700 mb-2">Power: {move.power}</p>
             <p className="text-gray-700 mb-2">PP: {move.pp}</p>
           </div>

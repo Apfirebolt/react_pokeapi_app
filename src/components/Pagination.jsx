@@ -24,6 +24,7 @@ const Pagination = ({
   const [current, setCurrent] = useState(currentPage);
 
   const handleGo = () => {
+    console.log('Current', current);
     if (current > 0 && current <= totalPages) {
       onPageChange(current);
     }

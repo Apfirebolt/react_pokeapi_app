@@ -14,7 +14,8 @@ const Pokemon = () => {
   const itemsPerPage = 40;
 
   const onPageChange = (page) => {
-    setCurrentPage(page);
+    // convert into number and set the page
+    setCurrentPage(Number(page));
     dispatch(
       getPokemonData({
         offset: (page - 1) * itemsPerPage,
@@ -44,7 +45,7 @@ const Pokemon = () => {
 
   return (
     <main className="container mx-auto p-4">
-      <h1 className="my-5 text-center text-3xl text-blue-900">Pokemon</h1>
+      <h1 className="my-2 text-center text-3xl text-blue-900 bg-white shadow-md rounded-md px-2 py-3">Pokemon</h1>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-neutral-100 border border-neutral-300">
           <thead>

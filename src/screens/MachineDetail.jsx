@@ -30,7 +30,7 @@ return (
         <div className="max-w-xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-5">
             <div className="p-4">
                 <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-2xl font-bold">Machine Details</h2>
+                    <h2 className="my-2 text-center text-3xl text-blue-900 bg-white shadow-md rounded-md px-2 py-3">Machine Details</h2>
                 </div>
                 <div className="mb-4">
                     <h3 className="text-xl font-semibold">ID:</h3>

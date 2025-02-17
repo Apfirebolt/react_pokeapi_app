@@ -14,7 +14,7 @@ const Type = () => {
   const itemsPerPage = 40;
 
   const onPageChange = (page) => {
-    setCurrentPage(page);
+    setCurrentPage(Number(page));
     dispatch(
       getTypeData({
         offset: (page - 1) * itemsPerPage,
@@ -44,7 +44,7 @@ const Type = () => {
 
   return (
     <main className="container mx-auto p-4">
-      <h1 className="my-5 text-center text-3xl text-blue-900">Type</h1>
+      <h1 className="my-2 text-center text-3xl text-blue-900 bg-white shadow-md rounded-md px-2 py-3">Type</h1>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-neutral-100 border border-neutral-300">
           <thead>
