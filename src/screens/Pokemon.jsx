@@ -15,10 +15,12 @@ const Pokemon = () => {
 
   const onPageChange = (page) => {
     setCurrentPage(page);
-    dispatch(getPokemonData({
-      offset: (page - 1) * itemsPerPage,
-      limit: itemsPerPage
-    }));
+    dispatch(
+      getPokemonData({
+        offset: (page - 1) * itemsPerPage,
+        limit: itemsPerPage,
+      })
+    );
   };
 
   const goToDetail = (url) => {
@@ -28,10 +30,12 @@ const Pokemon = () => {
   };
 
   useEffect(() => {
-    dispatch(getPokemonData({
-      offset: 0,
-      limit: itemsPerPage
-    }));
+    dispatch(
+      getPokemonData({
+        offset: 0,
+        limit: itemsPerPage,
+      })
+    );
   }, [dispatch]);
 
   if (isLoading) {
